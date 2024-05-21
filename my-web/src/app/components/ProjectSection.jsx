@@ -8,16 +8,18 @@ const projectsData = [
   {
     id: 1,
     title: "React Portfolio Website",
-    description: "Project 1 description",
+    description:
+      "Responsive portfolio website using next.js, Tailwind and framer motion, Showcasing my expertise through skill exploration and project highlights.",
     image: "/images/projects/1.png",
     tag: ["All", "Applications"],
-    gitUrl: "/",
+    gitUrl: "https://github.com/Jiayulllll/portofolio",
     previewUrl: "/",
   },
   {
     id: 2,
-    title: "Potography Portfolio Website",
-    description: "Project 2 description",
+    title: "Food Order Website",
+    description:
+      "Food oder website, finished the front-end part, working on the back-end part",
     image: "/images/projects/2.png",
     tag: ["All", "Applications"],
     gitUrl: "/",
@@ -26,11 +28,12 @@ const projectsData = [
   {
     id: 3,
     title: "Clustering of interval time series",
-    description: "Project 3 description",
+    description:
+      "Project aimed at providing different methods to compute variables in clustering analysis, mainly focusing on Point-to-Point comparison, Time domain method and Wavelet analysis.",
     image: "/images/projects/cluster.png",
     tag: ["All", "Data"],
     gitUrl: "https://www.overleaf.com/read/xsjhjfgrkyyn#8797d7",
-    previewUrl: "/",
+    previewUrl: "https://www.overleaf.com/read/xsjhjfgrkyyn#8797d7",
   },
   // {
   //   id: 4,
