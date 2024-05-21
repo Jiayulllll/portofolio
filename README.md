@@ -9,8 +9,10 @@ Built using:
 - Front-end library: React
 - CSS framework: React-bootstrap
 - CSS animations library: Animate.css
+- React animations library:framer motion
+- resend
 
-In the /personal-portfolio, you can run:
+In the /my-web, you can run:
 
 ### `npm start`
 
