@@ -1,46 +1,32 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import SkillPlanet from "./SkillPlanet";
 
 const Skills = () => {
-  // Initialize dimensions without directly referencing window
+  const containerRef = useRef(null); // Ref for the solar system container
   const [dimensions, setDimensions] = useState({
-    width: undefined, // Default can be a fallback width if needed
-    height: undefined, // Default can be a fallback height if needed
+    width: undefined,
+    height: undefined,
   });
 
   useEffect(() => {
-    // Ensure window is defined (this code runs only on the client side)
-    if (typeof window !== "undefined") {
-      // Function to update dimensions
-      const handleResize = () => {
+    const handleResize = () => {
+      if (containerRef.current) {
         setDimensions({
-          width: window.innerWidth,
-          height: window.innerHeight,
+          width: containerRef.current.offsetWidth,
+          height: containerRef.current.offsetHeight,
         });
-      };
+      }
+    };
 
-      // Set initial dimensions once the component mounts on the client
-      handleResize();
+    handleResize(); // Set initial dimensions
+    window.addEventListener("resize", handleResize); // Set up event listener for future resize events
+    return () => window.removeEventListener("resize", handleResize); // Clean up event listener when component unmounts
+  }, []);
 
-      // Set up event listener for future resize events
-      window.addEventListener("resize", handleResize);
-
-      // Clean up event listener when component unmounts
-      return () => window.removeEventListener("resize", handleResize);
-    }
-  }, []); // Empty dependency array ensures this effect runs only once after initial render
-
-  const maxWidth = 3824; // Example max width
-  const maxHeight = 2160; // Example max height
-
-  const baseRadiusX = dimensions.width
-    ? Math.min(dimensions.width / 5.7, maxWidth / 5.7)
-    : 0;
-  const baseRadiusY = dimensions.height
-    ? Math.min(dimensions.height / 5.7, maxHeight / 5.7)
-    : 0;
+  const baseRadiusX = dimensions.width ? dimensions.width / 4.8 : 0;
+  const baseRadiusY = dimensions.height ? dimensions.height / 4.8 : 0;
 
   const skillsData = [
     {
@@ -185,24 +171,19 @@ const Skills = () => {
       <h2 className="text-center text-4xl font-bold text-white mt-4">
         My Skills
       </h2>
-      <div style={{ ...styles.solarSystem, height: dimensions.height }}>
-        {/* Render content conditionally if dimensions are defined */}
+      <div ref={containerRef} style={styles.solarSystemContainer}>
         {dimensions.width && dimensions.height && (
           <>
-            <div
-              className="solar-system-container"
+            <img
+              src="/images/Full-stack.png"
+              alt="Sun"
               style={{
-                ...styles.solarSystemContainer,
-                height: dimensions.height,
+                ...styles.sunImage,
+                width: dimensions.width / 10,
+                height: dimensions.width / 10,
               }}
-            >
-              <img
-                src="/images/Full-stack.png"
-                alt="Sun"
-                style={styles.sunImage}
-              />
-            </div>
-            <svg width="100%" height="100%" style={styles.svgOverlay}>
+            />
+            <svg width="100%" height="100%">
               {skillsData.map((skill, index) => (
                 <ellipse
                   key={index}
@@ -233,27 +214,20 @@ const Skills = () => {
 };
 
 const styles = {
-  solarSystem: {
+  solarSystemContainer: {
     position: "relative",
     width: "100%",
+    height: "100vh", // You may adjust this based on your layout needs
+    overflow: "hidden",
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    overflow: "hidden",
-    backgroundColor: "#00000000",
-  },
-  solarSystemContainer: {
-    position: "relative",
-    width: "100vw",
-    overflow: "hidden",
-    background: "transparent",
+    backgroundColor: "transparent",
   },
   sunImage: {
     position: "absolute",
     top: "50%",
     left: "50%",
-    width: "100px",
-    height: "100px",
     transform: "translate(-50%, -50%)",
   },
   svgOverlay: {
