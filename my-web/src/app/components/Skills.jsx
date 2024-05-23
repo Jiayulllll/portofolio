@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import SkillPlanet from "./SkillPlanet";
 
 const Skills = () => {
-  // Initialize dimensions with undefined or some default value
+  // Initialize dimensions without directly referencing window
   const [dimensions, setDimensions] = useState({
     width: undefined, // Default can be a fallback width if needed
     height: undefined, // Default can be a fallback height if needed
@@ -21,7 +21,7 @@ const Skills = () => {
         });
       };
 
-      // Set initial dimensions
+      // Set initial dimensions once the component mounts on the client
       handleResize();
 
       // Set up event listener for future resize events
