@@ -32,8 +32,15 @@ const Skills = () => {
     }
   }, []); // Empty dependency array ensures this effect runs only once after initial render
 
-  const baseRadiusX = dimensions.width ? dimensions.width / 5.7 : 0;
-  const baseRadiusY = dimensions.height ? dimensions.height / 5.7 : 0;
+  const maxWidth = 3824; // Example max width
+  const maxHeight = 2160; // Example max height
+
+  const baseRadiusX = dimensions.width
+    ? Math.min(dimensions.width / 5.7, maxWidth / 5.7)
+    : 0;
+  const baseRadiusY = dimensions.height
+    ? Math.min(dimensions.height / 5.7, maxHeight / 5.7)
+    : 0;
 
   const skillsData = [
     {

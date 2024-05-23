@@ -23,7 +23,7 @@ const projectsData = [
     image: "/images/projects/2.png",
     tag: ["All", "Applications"],
     gitUrl: "https://github.com/Jiayulllll/food",
-    previewUrl: "food-jet-seven.vercel.app",
+    previewUrl: "https://food-jet-seven.vercel.app/",
   },
   {
     id: 3,
