@@ -13,7 +13,7 @@ const projectsData = [
     image: "/images/projects/1.png",
     tag: ["All", "Applications"],
     gitUrl: "https://github.com/Jiayulllll/portofolio",
-    previewUrl: "/",
+    previewUrl: "https://portofolio-lovat-alpha.vercel.app/",
   },
   {
     id: 2,
@@ -23,7 +23,7 @@ const projectsData = [
     image: "/images/projects/2.png",
     tag: ["All", "Applications"],
     gitUrl: "https://github.com/Jiayulllll/food",
-    previewUrl: "https://github.com/Jiayulllll/food",
+    previewUrl: "food-jet-seven.vercel.app",
   },
   {
     id: 3,
