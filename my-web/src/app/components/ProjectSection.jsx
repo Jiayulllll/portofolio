@@ -22,8 +22,8 @@ const projectsData = [
       "Food oder website, finished the front-end part, working on the back-end part",
     image: "/images/projects/2.png",
     tag: ["All", "Applications"],
-    gitUrl: "/",
-    previewUrl: "/",
+    gitUrl: "https://github.com/Jiayulllll/food",
+    previewUrl: "https://github.com/Jiayulllll/food",
   },
   {
     id: 3,
