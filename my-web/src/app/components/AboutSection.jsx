@@ -10,7 +10,7 @@ const AboutSection = () => {
         <div>
           <h2 className="text-4xl font-bold text-white mb-4">About me</h2>
           <p className="text-base lg:text-lg">
-            A graduate with a master’s in information technology is an
+            A graduate with a master degree in information technology is an
             enthusiast bringing practical academic experience delivering
             technical projects. Seeks a position that offers professional
             challenges utilising interpersonal skills, excellent time management

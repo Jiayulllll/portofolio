@@ -4,25 +4,36 @@ import { motion } from "framer-motion";
 import SkillPlanet from "./SkillPlanet";
 
 const Skills = () => {
+  // Initialize dimensions with undefined or some default value
   const [dimensions, setDimensions] = useState({
-    width: window.innerWidth,
-    height: window.innerHeight,
+    width: undefined, // Default can be a fallback width if needed
+    height: undefined, // Default can be a fallback height if needed
   });
 
   useEffect(() => {
-    const handleResize = () => {
-      setDimensions({
-        width: window.innerWidth,
-        height: window.innerHeight,
-      });
-    };
+    // Ensure window is defined (this code runs only on the client side)
+    if (typeof window !== "undefined") {
+      // Function to update dimensions
+      const handleResize = () => {
+        setDimensions({
+          width: window.innerWidth,
+          height: window.innerHeight,
+        });
+      };
 
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
+      // Set initial dimensions
+      handleResize();
 
-  const baseRadiusX = dimensions.width / 5.7;
-  const baseRadiusY = dimensions.height / 5.7;
+      // Set up event listener for future resize events
+      window.addEventListener("resize", handleResize);
+
+      // Clean up event listener when component unmounts
+      return () => window.removeEventListener("resize", handleResize);
+    }
+  }, []); // Empty dependency array ensures this effect runs only once after initial render
+
+  const baseRadiusX = dimensions.width ? dimensions.width / 5.7 : 0;
+  const baseRadiusY = dimensions.height ? dimensions.height / 5.7 : 0;
 
   const skillsData = [
     {
@@ -168,35 +179,47 @@ const Skills = () => {
         My Skills
       </h2>
       <div style={{ ...styles.solarSystem, height: dimensions.height }}>
-        <div
-          className="solar-system-container"
-          style={{ ...styles.solarSystemContainer, height: dimensions.height }}
-        >
-          <img src="/images/Full-stack.png" alt="Sun" style={styles.sunImage} />
-        </div>
-        <svg width="100%" height="100%" style={styles.svgOverlay}>
-          {skillsData.map((skill, index) => (
-            <ellipse
-              key={index}
-              cx="50%"
-              cy="50%"
-              rx={skill.orbitRadiusX}
-              ry={skill.orbitRadiusY}
-              style={styles.orbitPath}
-            />
-          ))}
-        </svg>
-        {skillsData.map((skill, index) => (
-          <SkillPlanet
-            key={index}
-            name={skill.name}
-            image={skill.image}
-            size={skill.size}
-            orbitDuration={skill.orbitDuration}
-            orbitRadiusX={skill.orbitRadiusX}
-            orbitRadiusY={skill.orbitRadiusY}
-          />
-        ))}
+        {/* Render content conditionally if dimensions are defined */}
+        {dimensions.width && dimensions.height && (
+          <>
+            <div
+              className="solar-system-container"
+              style={{
+                ...styles.solarSystemContainer,
+                height: dimensions.height,
+              }}
+            >
+              <img
+                src="/images/Full-stack.png"
+                alt="Sun"
+                style={styles.sunImage}
+              />
+            </div>
+            <svg width="100%" height="100%" style={styles.svgOverlay}>
+              {skillsData.map((skill, index) => (
+                <ellipse
+                  key={index}
+                  cx="50%"
+                  cy="50%"
+                  rx={skill.orbitRadiusX}
+                  ry={skill.orbitRadiusY}
+                  style={styles.orbitPath}
+                />
+              ))}
+            </svg>
+            {skillsData.map((skill, index) => (
+              <SkillPlanet
+                key={index}
+                name={skill.name}
+                image={skill.image}
+                size={skill.size}
+                orbitDuration={skill.orbitDuration}
+                orbitRadiusX={skill.orbitRadiusX}
+                orbitRadiusY={skill.orbitRadiusY}
+              />
+            ))}
+          </>
+        )}
       </div>
     </motion.section>
   );
