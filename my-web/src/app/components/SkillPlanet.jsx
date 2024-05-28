@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 
 const SkillPlanet = ({
-  name, // Include name in the props
+  name,
   image,
   size,
   orbitDuration,
@@ -60,7 +60,7 @@ const SkillPlanet = ({
           textAlign: "center",
           color: "white",
           fontSize: `${fontSize}px`, // Dynamic font size
-          marginTop: "4px", // Space between image and text
+          marginTop: "4px",
         }}
       >
         {name}

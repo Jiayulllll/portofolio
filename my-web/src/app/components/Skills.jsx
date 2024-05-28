@@ -22,7 +22,7 @@ const Skills = () => {
 
     handleResize(); // Set initial dimensions
     window.addEventListener("resize", handleResize); // Set up event listener for future resize events
-    return () => window.removeEventListener("resize", handleResize); // Clean up event listener when component unmounts
+    return () => window.removeEventListener("resize", handleResize); // Clean up event listener
   }, []);
 
   const baseRadiusX = dimensions.width ? dimensions.width / 4.8 : 0;
@@ -217,7 +217,7 @@ const styles = {
   solarSystemContainer: {
     position: "relative",
     width: "100%",
-    height: "100vh", // You may adjust this based on your layout needs
+    height: "100vh",
     overflow: "hidden",
     display: "flex",
     justifyContent: "center",
