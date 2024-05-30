@@ -22,8 +22,8 @@ const projectsData = [
       "Food oder website, finished the front-end part, working on the back-end part",
     image: "/images/projects/2.png",
     tag: ["All", "Applications"],
-    gitUrl: "https://github.com/Jiayulllll/food",
-    previewUrl: "https://food-jet-seven.vercel.app/",
+    gitUrl: "https://github.com/Jiayulllll/food-app",
+    previewUrl: "https://food-app-topaz.vercel.app/",
   },
   {
     id: 3,
