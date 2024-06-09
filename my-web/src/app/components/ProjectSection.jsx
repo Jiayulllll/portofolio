@@ -23,7 +23,7 @@ const projectsData = [
     image: "/images/projects/2.png",
     tag: ["All", "Applications"],
     gitUrl: "https://github.com/Jiayulllll/food-app",
-    previewUrl: "https://food-app-topaz.vercel.app/",
+    previewUrl: "https://food-app-nine-blue.vercel.app/",
   },
   {
     id: 3,
