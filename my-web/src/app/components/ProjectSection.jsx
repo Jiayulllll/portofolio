@@ -19,7 +19,7 @@ const projectsData = [
     id: 2,
     title: "Food Order Website",
     description:
-      "Food oder website, finished the front-end part, working on the back-end part",
+      "This full-stack food ordering site uses React, MongoDB, Node.js, and Stripe. It includes an Admin Panel for menu management and order updates. Customers can register, log in, add items to the cart, and place orders.",
     image: "/images/projects/2.png",
     tag: ["All", "Applications"],
     gitUrl: "https://github.com/Jiayulllll/food-app",
